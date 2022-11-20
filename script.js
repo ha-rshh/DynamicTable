@@ -1,22 +1,22 @@
 const formEl = document.querySelector('.form');
-const tbodyEl = document.querySelector('.tbody');
+const tbodyEl = document.querySelector('.insert-row');
 const nameEl = document.querySelector("#name");
 const emailEl = document.querySelector("#email");
 const phoneEl = document.querySelector("#number");
 const tableEl = document.querySelector(".table");
-const alert = document.querySelector(".red");
 const containerEl = document.querySelector(".box");
+
+
+
+
 containerEl.addEventListener("mousemove",(e) => {
 
     const {clientX} = e;
     containerEl.style.setProperty("--offset",clientX + "px")
 })
 
-formEl.addEventListener('submit', createTable);
-tableEl.addEventListener('click', deleteRow);
-
-function createTable(e){
-    e.preventDefault();
+formEl.addEventListener('submit', createTable=(event)=>{
+    event.preventDefault();
     const stName = nameEl.value;
     const stEmail = emailEl.value;
     const stMobile = phoneEl.value;
@@ -40,14 +40,14 @@ function createTable(e){
     nameEl.value = "";
     emailEl.value = "";
     phoneEl.value = "";  
-}
-}
-function deleteRow(e){
-    if(!e.target.classList.contains("btn")){
+}});
+
+tableEl.addEventListener('click', deleteRow=(event)=>{
+    if(!event.target.classList.contains("btn")){
         return;
     } 
-    const btn = e.target;
+    const btn = event.target;
     btn.closest('tr').remove();
-}
+});
 
 
