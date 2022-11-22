@@ -34,7 +34,7 @@ formEl.addEventListener('submit', createTable=(event)=>{
                 <td class="email-row">${stEmail}</td>
                 <td class="num-row">${stMobile}</td>
                 <td class="delete-row">
-                <button class="btn ">Delete</button>
+                <button class="btn" id = "remove-btn">Delete</button>
                 </td>
                 </tr>`
     nameEl.value = "";
@@ -42,12 +42,19 @@ formEl.addEventListener('submit', createTable=(event)=>{
     phoneEl.value = "";  
 }});
 
-tableEl.addEventListener('click', deleteRow=(event)=>{
-    if(!event.target.classList.contains("btn")){
-        return;
-    } 
-    const btn = event.target;
-    btn.closest('tr').remove();
+// tableEl.addEventListener('click', deleteRow=(event)=>{
+//     if(!event.target.classList.contains("btn")){
+//         return;
+//     } 
+//     const btn = event.target;
+//     btn.closest('tr').remove();
+// });
+
+tableEl.addEventListener('click', deleteRow = (event) => {
+    if(event.target.id === "remove-btn"){
+        event.target.parentElement.parentElement.remove();
+    }
 });
+
 
 
